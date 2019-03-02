@@ -1,6 +1,7 @@
 package com.example.presence.capture.persistence;
 
 import com.example.presence.common.ScanObserver;
+import com.example.presence.model.Access;
 import com.example.presence.model.FingerprintScan;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -16,7 +17,7 @@ public class DemoSenderImplTest {
 
         final Date now = new Date();
         final String fingerprintHash = "4d8276c6732e92fd37fe6a3f9f58284a";
-        FingerprintScan scan = new FingerprintScan(fingerprintHash, now);
+        FingerprintScan scan = new FingerprintScan(fingerprintHash, now, Access.LOGIN);
 
         DemoSenderImpl sender = new DemoSenderImpl();
         ScanObserver observer1 = Mockito.mock(ScanObserver.class);

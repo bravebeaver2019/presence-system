@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * primary impl we will use for demo in alternative to kafka impl.
+ * its a pub/sub simulator for demo purposes.
+ */
 @Component
 @Primary
 @Log

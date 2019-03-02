@@ -1,6 +1,7 @@
 package com.example.presence.capture;
 
 import com.example.presence.capture.persistence.Sender;
+import com.example.presence.model.Access;
 import com.example.presence.model.FingerprintScan;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,7 @@ public class FingerprintScanServiceTest {
 
         final Date now = new Date();
         final String fingerprintHash = "4d8276c6732e92fd37fe6a3f9f58284a";
-        FingerprintScan scan = new FingerprintScan(fingerprintHash, now);
+        FingerprintScan scan = new FingerprintScan(fingerprintHash, now, Access.LOGIN);
 
         service.readScan(scan);
         // just check the service is correctly invoked

@@ -6,7 +6,6 @@ public interface ScanObserver {
 
     /**
      * please tell me whenever a new scan is available.
-     *
      * @param scan the scan I want
      */
     void notify(FingerprintScan scan);

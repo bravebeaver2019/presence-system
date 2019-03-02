@@ -22,8 +22,14 @@ public class FingerprintScan {
     String fingerprintHash;
 
     /**
+     * the timestamp when the fingerprint is read.
      * we will consider all dates are in GMT.
      */
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="GMT")
     Date scanTimestamp;
+
+    /**
+     * says the type of access, an employee can login or logout.
+     */
+    Access access;
 }

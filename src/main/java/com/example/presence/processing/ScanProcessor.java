@@ -29,6 +29,7 @@ public class ScanProcessor implements ScanObserver {
     @Override
     public void notify(FingerprintScan scan) {
         log.info(":: processing :: received scan " + scan);
-
+        // for login accesses we just update the database with the latest login
+        // for logout we have to compute the total presence time since the last login
     }
 }
