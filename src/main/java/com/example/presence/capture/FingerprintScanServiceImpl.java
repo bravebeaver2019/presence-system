@@ -1,17 +1,20 @@
 package com.example.presence.capture;
 
+import com.example.presence.capture.persistence.Sender;
 import com.example.presence.model.FingerprintScan;
-import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-@Log
 public class FingerprintScanServiceImpl implements FingerprintScanService {
+
+    @Autowired
+    Sender sender;
 
     @Override
     public Mono<Void> readScan(FingerprintScan scan) {
-        log.info("processing scan: " + scan);
+        sender.send(scan);
         return null;
     }
 }
