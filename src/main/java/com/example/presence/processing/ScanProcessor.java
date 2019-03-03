@@ -14,11 +14,14 @@ import javax.annotation.PostConstruct;
  * (kafka) and process and populate the derived database.
  */
 @Component
-@Log
+@Log(topic = "::processing::")
 public class ScanProcessor implements ScanObserver {
 
     @Autowired
     ScanObservable observable;
+
+    @Autowired
+    AccessProcessorFactory factory;
 
     @PostConstruct
     public void init() {
@@ -28,8 +31,8 @@ public class ScanProcessor implements ScanObserver {
 
     @Override
     public void notify(FingerprintScan scan) {
-        log.info(":: processing :: received scan " + scan);
-        // for login accesses we just update the database with the latest login
-        // for logout we have to compute the total presence time since the last login
+        log.info("received scan " + scan);
+        // this component relies on others that are specific on the scan type
+        factory.getAccessProcessor(scan).processScan(scan);
     }
 }

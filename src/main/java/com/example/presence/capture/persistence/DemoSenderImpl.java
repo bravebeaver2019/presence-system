@@ -16,14 +16,14 @@ import java.util.List;
  */
 @Component
 @Primary
-@Log
+@Log(topic = "::capture::")
 public class DemoSenderImpl implements Sender, ScanObservable {
 
     private List<ScanObserver> observers = new ArrayList<>();
 
     @Override
     public void send(FingerprintScan scan) {
-        log.info(":: capture :: received scan: " + scan + "notifying listeners");
+        log.info("received scan: " + scan + "notifying listeners");
         // quick and dirty way to simulate an asynchronous pub/sub system
         observers.stream().parallel().forEach(obs -> obs.notify(scan));
     }
