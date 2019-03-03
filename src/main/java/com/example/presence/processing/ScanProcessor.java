@@ -33,6 +33,6 @@ public class ScanProcessor implements ScanObserver {
     public void notify(FingerprintScan scan) {
         log.info("received scan " + scan);
         // this component relies on others that are specific on the scan type
-        factory.getAccessProcessor(scan).processScan(scan);
+        factory.getAccessProcessor(scan).processScanEvent(scan);
     }
 }

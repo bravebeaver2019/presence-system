@@ -8,7 +8,7 @@ import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
-public class AccessProcessorFactoryTest {
+public class AccessEventProcessorFactoryTest {
 
     @Test
     public void testLogin() {
@@ -16,11 +16,11 @@ public class AccessProcessorFactoryTest {
         FingerprintScan scan = new FingerprintScan("4d8276c6732e92fd37fe6a3f9f58284a",
                 new Date(), Access.LOGIN);
         AccessProcessorFactory factory = new AccessProcessorFactory();
-        factory.login = new LoginAccessProcessor();
-        AccessProcessor accessProcessor = factory.getAccessProcessor(scan);
+        factory.login = new LoginAccessEventProcessor();
+        AccessEventProcessor accessEventProcessor = factory.getAccessProcessor(scan);
 
         assertEquals("Processor class retrieved",
-                LoginAccessProcessor.class, accessProcessor.getClass());
+                LoginAccessEventProcessor.class, accessEventProcessor.getClass());
     }
 
     @Test
@@ -29,11 +29,11 @@ public class AccessProcessorFactoryTest {
         FingerprintScan scan = new FingerprintScan("4d8276c6732e92fd37fe6a3f9f58284a",
                 new Date(), Access.LOGOUT);
         AccessProcessorFactory factory = new AccessProcessorFactory();
-        factory.logout = new LogoutAccessProcessor();
-        AccessProcessor accessProcessor = factory.getAccessProcessor(scan);
+        factory.logout = new LogoutAccessEventProcessor();
+        AccessEventProcessor accessEventProcessor = factory.getAccessProcessor(scan);
 
         assertEquals("Processor class retrieved",
-                LogoutAccessProcessor.class, accessProcessor.getClass());
+                LogoutAccessEventProcessor.class, accessEventProcessor.getClass());
     }
 
     @Test(expected = RuntimeException.class)

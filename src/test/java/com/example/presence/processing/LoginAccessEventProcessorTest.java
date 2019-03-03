@@ -15,10 +15,10 @@ import java.util.Date;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class LoginAccessProcessorTest {
+public class LoginAccessEventProcessorTest {
 
     @InjectMocks
-    LoginAccessProcessor processor = new LoginAccessProcessor();
+    LoginAccessEventProcessor processor = new LoginAccessEventProcessor();
 
     @Mock
     TimeRangeRepository repository;
@@ -30,7 +30,7 @@ public class LoginAccessProcessorTest {
         FingerprintScan scan = new FingerprintScan(fingerprintHash,
                 now, Access.LOGIN);
 
-        processor.processScan(scan);
+        processor.processScanEvent(scan);
         TimeRange range = TimeRange.builder().loginDate(now).userId(fingerprintHash).build();
         Mockito.verify(repository).save(range);
     }

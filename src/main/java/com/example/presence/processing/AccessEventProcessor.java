@@ -2,7 +2,7 @@ package com.example.presence.processing;
 
 import com.example.presence.model.FingerprintScan;
 
-public interface AccessProcessor {
+public interface AccessEventProcessor {
 
-    void processScan(FingerprintScan scan);
+    void processScanEvent(FingerprintScan scan);
 }

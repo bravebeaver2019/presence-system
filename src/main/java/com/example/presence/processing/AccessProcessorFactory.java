@@ -11,13 +11,13 @@ public class AccessProcessorFactory {
 
     @Autowired
     @Qualifier("login")
-    AccessProcessor login;
+    AccessEventProcessor login;
 
     @Autowired
     @Qualifier("logout")
-    AccessProcessor logout;
+    AccessEventProcessor logout;
 
-    public AccessProcessor getAccessProcessor(FingerprintScan scan) {
+    public AccessEventProcessor getAccessProcessor(FingerprintScan scan) {
 
         if (scan.getAccess().equals(Access.LOGIN)) {
             return login;

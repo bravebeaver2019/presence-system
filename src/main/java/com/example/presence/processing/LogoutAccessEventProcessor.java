@@ -8,9 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Qualifier("logout")
 @Log(topic = "::processing::")
-public class LogoutAccessProcessor implements AccessProcessor {
+public class LogoutAccessEventProcessor implements AccessEventProcessor {
     @Override
-    public void processScan(FingerprintScan scan) {
+    public void processScanEvent(FingerprintScan scan) {
         log.info("LOGOUT scan");
+        // a logout event has arrived, now its time to find the latest unclosed login in range table,
+        // update the table with the logout date and compute for each day, the number of minutes
+        // of presence
     }
 }

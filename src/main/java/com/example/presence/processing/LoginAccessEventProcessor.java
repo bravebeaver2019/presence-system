@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 @Qualifier("login")
 @Log(topic = "::processing::")
-public class LoginAccessProcessor implements AccessProcessor {
+public class LoginAccessEventProcessor implements AccessEventProcessor {
 
     @Autowired
     TimeRangeRepository repository;
 
     @Override
-    public void processScan(FingerprintScan scan) {
+    public void processScanEvent(FingerprintScan scan) {
         // upon login we just create and save a new TimeRange entity
         TimeRange timeRange = TimeRange.builder()
                 .userId(scan.getFingerprintHash())

@@ -25,7 +25,7 @@ public class ScanProcessorTest {
     @Mock
     AccessProcessorFactory factory;
     @Mock
-    AccessProcessor accessProcessor;
+    AccessEventProcessor accessEventProcessor;
 
     @Test
     public void testScanProcessorInit() {
@@ -37,9 +37,9 @@ public class ScanProcessorTest {
     public void testNotify() {
         FingerprintScan scan = new FingerprintScan("4d8276c6732e92fd37fe6a3f9f58284a",
                 new Date(), Access.LOGIN);
-        when(factory.getAccessProcessor(scan)).thenReturn(accessProcessor);
+        when(factory.getAccessProcessor(scan)).thenReturn(accessEventProcessor);
         processor.notify(scan);
         Mockito.verify(factory).getAccessProcessor(scan);
-        Mockito.verify(accessProcessor).processScan(scan);
+        Mockito.verify(accessEventProcessor).processScanEvent(scan);
     }
 }
