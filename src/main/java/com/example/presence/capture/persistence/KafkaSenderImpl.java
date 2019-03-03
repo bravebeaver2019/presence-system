@@ -1,6 +1,6 @@
 package com.example.presence.capture.persistence;
 
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.FingerprintScan;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

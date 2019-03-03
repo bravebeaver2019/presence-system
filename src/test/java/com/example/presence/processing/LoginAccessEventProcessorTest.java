@@ -1,9 +1,9 @@
 package com.example.presence.processing;
 
-import com.example.presence.model.Access;
-import com.example.presence.model.FingerprintScan;
-import com.example.presence.model.TimeRange;
-import com.example.presence.persistence.TimeRangeRepository;
+import com.example.presence.common.model.Access;
+import com.example.presence.common.model.FingerprintScan;
+import com.example.presence.common.model.TimeRange;
+import com.example.presence.common.persistence.TimeRangeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

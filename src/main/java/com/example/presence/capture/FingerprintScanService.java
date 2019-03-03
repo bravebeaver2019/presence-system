@@ -1,6 +1,6 @@
 package com.example.presence.capture;
 
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.FingerprintScan;
 import reactor.core.publisher.Mono;
 
 public interface FingerprintScanService {

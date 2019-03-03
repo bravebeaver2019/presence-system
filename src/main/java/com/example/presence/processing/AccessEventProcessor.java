@@ -1,6 +1,6 @@
 package com.example.presence.processing;
 
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.FingerprintScan;
 
 public interface AccessEventProcessor {
 

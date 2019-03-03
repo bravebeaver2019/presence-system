@@ -1,6 +1,6 @@
-package com.example.presence.persistence;
+package com.example.presence.common.persistence;
 
-import com.example.presence.model.TimeRange;
+import com.example.presence.common.model.TimeRange;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

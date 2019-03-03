@@ -1,6 +1,6 @@
 package com.example.presence.capture;
 
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.FingerprintScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

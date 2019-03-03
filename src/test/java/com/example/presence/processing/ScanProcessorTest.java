@@ -1,8 +1,8 @@
 package com.example.presence.processing;
 
 import com.example.presence.common.ScanObservable;
-import com.example.presence.model.Access;
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.Access;
+import com.example.presence.common.model.FingerprintScan;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

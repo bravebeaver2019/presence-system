@@ -1,4 +1,4 @@
-package com.example.presence.model;
+package com.example.presence.common.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;

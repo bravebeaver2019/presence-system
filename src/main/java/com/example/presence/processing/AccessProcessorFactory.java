@@ -1,7 +1,7 @@
 package com.example.presence.processing;
 
-import com.example.presence.model.Access;
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.Access;
+import com.example.presence.common.model.FingerprintScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;

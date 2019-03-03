@@ -1,7 +1,7 @@
 package com.example.presence.processing;
 
-import com.example.presence.model.Access;
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.Access;
+import com.example.presence.common.model.FingerprintScan;
 import org.junit.Test;
 
 import java.util.Date;

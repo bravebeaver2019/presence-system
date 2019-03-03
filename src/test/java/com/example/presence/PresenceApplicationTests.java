@@ -1,10 +1,10 @@
 package com.example.presence;
 
 import com.example.presence.capture.FingerprintScanController;
-import com.example.presence.model.Access;
-import com.example.presence.model.DailyPresence;
-import com.example.presence.model.FingerprintScan;
-import com.example.presence.persistence.DailyPresenceRepository;
+import com.example.presence.common.model.Access;
+import com.example.presence.common.model.DailyPresence;
+import com.example.presence.common.model.FingerprintScan;
+import com.example.presence.common.persistence.DailyPresenceRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.presence.model;
+package com.example.presence.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

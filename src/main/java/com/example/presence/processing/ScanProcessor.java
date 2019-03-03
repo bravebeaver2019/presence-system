@@ -2,7 +2,7 @@ package com.example.presence.processing;
 
 import com.example.presence.common.ScanObservable;
 import com.example.presence.common.ScanObserver;
-import com.example.presence.model.FingerprintScan;
+import com.example.presence.common.model.FingerprintScan;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
