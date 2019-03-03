@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.Minutes;
 
 import javax.persistence.*;
@@ -32,5 +33,10 @@ public class TimeRange {
     public Integer presenceMinutes() {
         Minutes minutes = Minutes.minutesBetween(new DateTime(loginDate), new DateTime(logoutDate));
         return minutes.getMinutes();
+    }
+
+    public boolean isSameDay() {
+        Days days = Days.daysBetween(new DateTime(loginDate), new DateTime(logoutDate));
+        return days.getDays() == 0;
     }
 }
