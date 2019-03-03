@@ -57,4 +57,30 @@ public class TimeRangeTest {
 
     }
 
+    @Test
+    public void testSinceEpoch() throws ParseException {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        TimeZone gmtTime = TimeZone.getTimeZone("GMT");
+        simpleDateFormat.setTimeZone(gmtTime);
+
+        TimeRange tr = new TimeRange();
+
+        tr.setLogoutDate(simpleDateFormat.parse("1970-11-02T02:50:32.908Z"));
+        assertEquals(0, tr.yearsSinceEpoch());
+        assertEquals(10, tr.monthsSinceEpoch());
+        assertEquals(43, tr.weeksSinceEpoch());
+        assertEquals(304, tr.daysSinceEpoch());
+        tr.setLogoutDate(simpleDateFormat.parse("1975-11-02T02:50:32.908Z"));
+        assertEquals(5, tr.yearsSinceEpoch());
+        assertEquals(70, tr.monthsSinceEpoch());
+        assertEquals(304, tr.weeksSinceEpoch());
+        assertEquals(2130, tr.daysSinceEpoch());
+        tr.setLogoutDate(simpleDateFormat.parse("2019-03-03T22:12:12.000Z"));
+        assertEquals(49, tr.yearsSinceEpoch());
+        assertEquals(590, tr.monthsSinceEpoch());
+        assertEquals(2565, tr.weeksSinceEpoch());
+        assertEquals(17958, tr.daysSinceEpoch());
+    }
+
 }

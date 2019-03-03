@@ -67,3 +67,15 @@ assuming the employee accessed the workplace without logging in
 
 * The presence calculation precision will be minutes, any login-logout sequence below this threshold will
 be considered zero
+
+* include an index in table TimeRange to avoid losing performance when many rows are present
+
+* DailyPresence table is a denormalized table for reporting access easiness.
+it contains one row per user and workday having the total number of minutes spent at work during that day.
+For fast access and in order to allow grouping by different date units like day, monthe, week or year it has
+several columns with the number of units since epoch sor such date unit.
+It will allow us to quickly get reports like for example
+  * the total presence for one employee on Jan 2018
+  * the total presence per employee in the last week
+  * the total presence for one employee yesterday
+

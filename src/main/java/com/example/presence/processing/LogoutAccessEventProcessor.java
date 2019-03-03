@@ -1,7 +1,9 @@
 package com.example.presence.processing;
 
+import com.example.presence.model.DailyPresence;
 import com.example.presence.model.FingerprintScan;
 import com.example.presence.model.TimeRange;
+import com.example.presence.persistence.DailyPresenceRepository;
 import com.example.presence.persistence.TimeRangeRepository;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,9 @@ import java.util.Optional;
 public class LogoutAccessEventProcessor implements AccessEventProcessor {
 
     @Autowired
-    TimeRangeRepository repository;
+    TimeRangeRepository timeRangeRepository;
+    @Autowired
+    DailyPresenceRepository presenceRepository;
 
     @Override
     public void processScanEvent(FingerprintScan scan) {
@@ -24,18 +28,27 @@ public class LogoutAccessEventProcessor implements AccessEventProcessor {
         // a logout event has arrived, now its time to find the latest unclosed login in range table,
         // update the table with the logout date and compute for each day, the number of minutes
         // of presence
-        Optional<TimeRange> first = repository.findLastUnclosedRanges(scan.getFingerprintHash()).stream().findFirst();
+        Optional<TimeRange> first = timeRangeRepository.findLastUnclosedRanges(scan.getFingerprintHash()).stream().findFirst();
         if (first.isPresent()) {
             // an open login was found
             TimeRange lastLogin = first.get();
             lastLogin.setLogoutDate(scan.getScanTimestamp());
-            repository.save(lastLogin);
+            timeRangeRepository.save(lastLogin);
 
-            // now we will calculate the time diff in minutes between login and logout events
-            log.info(lastLogin.toString());
-            log.info("minutes of presence; " + lastLogin.presenceMinutes());
-            // if both dates in same day then one single entry
-            // if both dates in different day then more than one entry is needed
+            if (lastLogin.isSameDay()) {
+                log.info("minutes of presence; " + lastLogin.presenceMinutes());
+                DailyPresence presence = DailyPresence.builder()
+                        .userId(lastLogin.getUserId())
+                        .presenceMinutes(lastLogin.presenceMinutes())
+                        .yearsSinceEpoch(lastLogin.yearsSinceEpoch())
+                        .monthsSinceEpoch(lastLogin.monthsSinceEpoch())
+                        .weeksSinceEpoch(lastLogin.weeksSinceEpoch())
+                        .daysSinceEpoch(lastLogin.daysSinceEpoch())
+                        .build();
+                presenceRepository.save(presence);
+            } else {
+                // todo: create one record per day with the total amount of minutes
+            }
         } else {
             log.warning("a LOGOUT event with a previous LOGIN event was received");
         }
