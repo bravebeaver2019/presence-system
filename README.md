@@ -64,3 +64,4 @@ assuming the employee once left the workplace without logging out
 3.- In case a second logout happens, I will ignore it and will not make presence time calculations,
 assuming the employee accessed the workplace without logging in
 4.- Its out of the scope of this test but I would probably generate an alert in any of these two cases.
+
