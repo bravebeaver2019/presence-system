@@ -58,12 +58,14 @@ Upon logout we will find the last login and compute the presence time.
 
 * now since I dont have access to stakeholders its time to make many important assumptions about the
 external behavior of the external systems and people.
-1.- I will assume senquentiality, all events will arrive ordered in time
-2.- In case a second login happens, I will ignore the previous one and will consider only the latest,
-assuming the employee once left the workplace without logging out
-3.- In case a second logout happens, I will ignore it and will not make presence time calculations,
+  * I will assume senquentiality, all events will arrive ordered in time
+  * In case a second login happens, I will ignore the previous one and will consider only the latest,
+assuming the employee once left the workplace without logging out,
+see PresenceApplicationTests#testFirstLoginIgnored()
+  * In case a second logout happens, I will ignore it and will not make presence time calculations,
 assuming the employee accessed the workplace without logging in
-4.- Its out of the scope of this test but I would probably generate an alert in any of these two cases.
+see PresenceApplicationTests#testSecondLogoutIgnored()
+  * Its out of the scope of this test but I would probably generate an alert in any of these two cases.
 
 * The presence calculation precision will be minutes, any login-logout sequence below this threshold will
 be considered zero
