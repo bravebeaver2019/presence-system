@@ -24,8 +24,5 @@ public class LoginAccessEventProcessor implements AccessEventProcessor {
                 .loginDate(scan.getScanTimestamp()).build();
         repository.save(timeRange);
         log.info("New timeRange entry persisted for login scan");
-
-        // todo: deleteme
-        repository.findLastUnclosedRanges().stream().forEach(o -> System.err.println(o));
     }
 }

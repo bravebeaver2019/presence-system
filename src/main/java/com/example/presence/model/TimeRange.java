@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.joda.time.DateTime;
+import org.joda.time.Minutes;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,4 +29,8 @@ public class TimeRange {
     @Temporal(TemporalType.TIMESTAMP)
     private Date logoutDate;
 
+    public Integer presenceMinutes() {
+        Minutes minutes = Minutes.minutesBetween(new DateTime(loginDate), new DateTime(logoutDate));
+        return minutes.getMinutes();
+    }
 }

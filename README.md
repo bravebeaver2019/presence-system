@@ -65,3 +65,5 @@ assuming the employee once left the workplace without logging out
 assuming the employee accessed the workplace without logging in
 4.- Its out of the scope of this test but I would probably generate an alert in any of these two cases.
 
+* The presence calculation precision will be minutes, any login-logout sequence below this threshold will
+be considered zero
