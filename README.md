@@ -1,7 +1,7 @@
 Diagram
 
 
-
+<pre>
 +--------------------+           +-------------------+            +------------------+\
 |                    |           |                   |            |                  |\
 |    CAPTURE         |           |   PROCESSING      |            |   REPORTING      |\
@@ -19,7 +19,7 @@ Diagram
                      |           |                    |           |\
                      |           |                    |           |\
                      +-----------+                    +-----------+\
-
+</pre>
 
 Notes and assumptions
 
