@@ -1,4 +1,4 @@
-Diagram
+# Diagram #
 
 
 <pre>
@@ -21,7 +21,7 @@ Diagram
                      +-----------+                    +-----------+
 </pre>
 
-Notes and assumptions
+# Notes and assumptions #
 
 * replay capabilities> I decided to implement the capture and the report generation in different phases (CQRS)
 it allows both parts to scale independently and provides replay capabilities.
