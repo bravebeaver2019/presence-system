@@ -1,5 +1,6 @@
 package com.example.presence.processing;
 
+import com.example.presence.common.TimeUtils;
 import com.example.presence.common.model.DailyPresence;
 import com.example.presence.common.model.FingerprintScan;
 import com.example.presence.common.model.TimeRange;
@@ -21,6 +22,8 @@ public class LogoutAccessEventProcessor implements AccessEventProcessor {
     TimeRangeRepository timeRangeRepository;
     @Autowired
     DailyPresenceRepository presenceRepository;
+    @Autowired
+    TimeUtils utils;
 
     @Override
     public void processScanEvent(FingerprintScan scan) {
@@ -35,15 +38,15 @@ public class LogoutAccessEventProcessor implements AccessEventProcessor {
             lastLogin.setLogoutDate(scan.getScanTimestamp());
             timeRangeRepository.save(lastLogin);
 
-            if (lastLogin.isSameDay()) {
+            if (lastLogin.loggedOutSameDay()) {
                 log.info("minutes of presence; " + lastLogin.presenceMinutes());
                 DailyPresence presence = DailyPresence.builder()
                         .userId(lastLogin.getUserId())
                         .presenceMinutes(lastLogin.presenceMinutes())
-                        .yearsSinceEpoch(lastLogin.yearsSinceEpoch())
-                        .monthsSinceEpoch(lastLogin.monthsSinceEpoch())
-                        .weeksSinceEpoch(lastLogin.weeksSinceEpoch())
-                        .daysSinceEpoch(lastLogin.daysSinceEpoch())
+                        .yearsSinceEpoch(utils.yearsSinceEpoch(lastLogin.getLogoutDate()))
+                        .monthsSinceEpoch(utils.monthsSinceEpoch(lastLogin.getLogoutDate()))
+                        .weeksSinceEpoch(utils.weeksSinceEpoch(lastLogin.getLogoutDate()))
+                        .daysSinceEpoch(utils.daysSinceEpoch(lastLogin.getLogoutDate()))
                         .build();
                 presenceRepository.save(presence);
             } else {

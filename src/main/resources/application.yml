@@ -5,3 +5,7 @@ logging:
     org.springframework.web: trace
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+# change this by daily cron expr
+report.daily.fixed.rate.millis: 5000
+# the min amount of minutes required per day, below this an alarm report is raised
+min.presence.daily.threshold.minutes: 150

@@ -1,5 +1,6 @@
 package com.example.presence.processing;
 
+import com.example.presence.common.TimeUtils;
 import com.example.presence.common.model.Access;
 import com.example.presence.common.model.DailyPresence;
 import com.example.presence.common.model.FingerprintScan;
@@ -31,6 +32,8 @@ public class LogoutAccessProcessorTest {
     TimeRangeRepository timeRangeRepository;
     @Mock
     DailyPresenceRepository presenceRepository;
+    @Mock
+    TimeUtils utils;
 
     @Test
     public void testNoOpenLoginFound() {
@@ -61,6 +64,10 @@ public class LogoutAccessProcessorTest {
         ranges.add(timeRange);
 
         when(timeRangeRepository.findLastUnclosedRanges(userId)).thenReturn(ranges);
+        when(utils.daysSinceEpoch(logoutDate)).thenReturn(16010);
+        when(utils.weeksSinceEpoch(logoutDate)).thenReturn(2287);
+        when(utils.monthsSinceEpoch(logoutDate)).thenReturn(526);
+        when(utils.yearsSinceEpoch(logoutDate)).thenReturn(43);
         processor.processScanEvent(logoutEvent);
         timeRange.setLogoutDate(logoutDate);
         verify(timeRangeRepository).save(timeRange);
