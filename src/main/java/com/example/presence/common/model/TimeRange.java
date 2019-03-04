@@ -56,7 +56,7 @@ public class TimeRange {
     public int yearsSinceEpoch() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
-        return Years.yearsBetween(epoch, new DateTime(logoutDate)).getYears();
+        return Years.yearsBetween(epoch, new DateTime(logoutDate).withZone(DateTimeZone.UTC)).getYears();
     }
 
     /**
@@ -67,7 +67,7 @@ public class TimeRange {
     public int monthsSinceEpoch() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
-        return Months.monthsBetween(epoch, new DateTime(logoutDate)).getMonths();
+        return Months.monthsBetween(epoch, new DateTime(logoutDate).withZone(DateTimeZone.UTC)).getMonths();
     }
 
     /**
@@ -78,7 +78,7 @@ public class TimeRange {
     public int weeksSinceEpoch() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
-        return Weeks.weeksBetween(epoch, new DateTime(logoutDate)).getWeeks();
+        return Weeks.weeksBetween(epoch, new DateTime(logoutDate).withZone(DateTimeZone.UTC)).getWeeks();
     }
 
     /**
@@ -89,6 +89,6 @@ public class TimeRange {
     public int daysSinceEpoch() {
         MutableDateTime epoch = new MutableDateTime();
         epoch.setDate(0);
-        return Days.daysBetween(epoch, new DateTime(logoutDate)).getDays();
+        return Days.daysBetween(epoch, new DateTime(logoutDate).withZone(DateTimeZone.UTC)).getDays();
     }
 }
