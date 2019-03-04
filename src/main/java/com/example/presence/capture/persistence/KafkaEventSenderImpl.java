@@ -8,7 +8,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class KafkaSenderImpl implements Sender {
+public class KafkaEventSenderImpl implements EventSender {
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;

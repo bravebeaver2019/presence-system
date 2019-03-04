@@ -10,7 +10,7 @@ import java.util.Date;
 
 import static org.mockito.Mockito.verify;
 
-public class DemoSenderImplTest {
+public class DemoEventSenderImplTest {
 
     @Test
     public void testNotifications() {
@@ -19,7 +19,7 @@ public class DemoSenderImplTest {
         final String fingerprintHash = "4d8276c6732e92fd37fe6a3f9f58284a";
         FingerprintScan scan = new FingerprintScan(fingerprintHash, now, Access.LOGIN);
 
-        DemoSenderImpl sender = new DemoSenderImpl();
+        DemoEventSenderImpl sender = new DemoEventSenderImpl();
         ScanObserver observer1 = Mockito.mock(ScanObserver.class);
         ScanObserver observer2 = Mockito.mock(ScanObserver.class);
 

@@ -11,6 +11,10 @@ import org.joda.time.Minutes;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * This entity lives a temporal PROCESSING stage, its used to compute time diffs
+ * between async login and logout events.
+ */
 @Entity
 @Data
 @Builder

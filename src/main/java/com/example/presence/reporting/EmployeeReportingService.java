@@ -27,8 +27,7 @@ public class EmployeeReportingService {
                 int weeksFrom = utils.weeksSinceEpoch(date);
                 presenceMinutes = repository.presenceMinutesWeekPeriod(employeeId, weeksFrom, weeksFrom + 1);
             } // todo: implement the other range reports and refactor to a factory pattern or other
-        } catch (Exception e) {
-            // no presence found for such date and period
+        } catch (Exception e) { // no presence found for such date and period
         }
         return new EmployeePresenceReport(employeeId, date, date, presenceMinutes, period);
     }

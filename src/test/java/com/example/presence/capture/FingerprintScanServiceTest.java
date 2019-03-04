@@ -1,6 +1,6 @@
 package com.example.presence.capture;
 
-import com.example.presence.capture.persistence.Sender;
+import com.example.presence.capture.persistence.EventSender;
 import com.example.presence.common.model.Access;
 import com.example.presence.common.model.FingerprintScan;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class FingerprintScanServiceTest {
     FingerprintScanServiceImpl service;
 
     @Mock
-    Sender sender;
+    EventSender eventSender;
 
     @Test
     public void testFingerprintScanService() {
@@ -29,6 +29,6 @@ public class FingerprintScanServiceTest {
         FingerprintScan scan = new FingerprintScan(fingerprintHash, now, Access.LOGIN);
 
         service.readScan(scan);
-        Mockito.verify(sender).send(scan);
+        Mockito.verify(eventSender).send(scan);
     }
 }

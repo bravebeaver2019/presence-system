@@ -25,14 +25,12 @@ public class ScanProcessor implements ScanObserver {
 
     @PostConstruct
     public void init() {
-        // please, allow me to listen to scans
         observable.addObserver(this);
     }
 
     @Override
     public void notify(FingerprintScan scan) {
         log.info("received scan " + scan);
-        // this component relies on others that are specific on the scan type
         factory.getAccessProcessor(scan).processScanEvent(scan);
     }
 }

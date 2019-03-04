@@ -37,7 +37,6 @@ public class LogoutAccessEventProcessor implements AccessEventProcessor {
             TimeRange lastLogin = first.get();
             lastLogin.setLogoutDate(scan.getScanTimestamp());
             timeRangeRepository.save(lastLogin);
-
             if (lastLogin.loggedOutSameDay()) {
                 log.info("minutes of presence; " + lastLogin.presenceMinutes());
                 DailyPresence presence = DailyPresence.builder()
@@ -53,7 +52,7 @@ public class LogoutAccessEventProcessor implements AccessEventProcessor {
                 // todo: create one record per day with the total amount of minutes
             }
         } else {
-            log.warning("a LOGOUT event with a previous LOGIN event was received");
+            log.warning("a LOGOUT event without a previous LOGIN event was received");
         }
     }
 }

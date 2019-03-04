@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 @Primary
 @Log(topic = "::capture::")
-public class DemoSenderImpl implements Sender, ScanObservable {
+public class DemoEventSenderImpl implements EventSender, ScanObservable {
 
     private List<ScanObserver> observers = new ArrayList<>();
 
