@@ -174,3 +174,6 @@ this http call returns the daily presence of an employee
 * I have included a couple of scheduled reports as example, one sends a map with the yesterday presence of
 employees in minutes, the other sends the same report but for those employees who didnt reach the minimum
 number of minutes expected by parameter (min.presence.daily.threshold.minutes in application.yml)
+
+* things to make and do: I have added a TODO
+comment in the code to warn about things that are not yet implemented.
