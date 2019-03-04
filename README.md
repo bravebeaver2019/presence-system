@@ -177,3 +177,6 @@ number of minutes expected by parameter (min.presence.daily.threshold.minutes in
 
 * things to make and do: I have added a TODO
 comment in the code to warn about things that are not yet implemented.
+
+* next thing I would like to have done is a docker compose file to setup a kafka environment and replace
+the in memory implementation of the message broker.
