@@ -87,3 +87,8 @@ It will allow us to quickly get reports like for example
 
 * fingerprint hash has been used along all the application to identify an employee, this assumes the
 external fingerprint scanner is capable to uniquely identify the same employee with the same hash
+
+* web reporting is accessible via rest api
+curl -XGET "http://localhost:8080/reporting/employee?employeeId=4d8276c6732e92fd37fe6a3f9f58284a&period=day&date=2011-11-02"
+this http call returns the daily presence of an employee
+

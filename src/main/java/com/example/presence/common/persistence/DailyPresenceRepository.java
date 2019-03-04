@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Map;
+
 public interface DailyPresenceRepository extends CrudRepository<DailyPresence, Long> {
 
     @Query("SELECT SUM(dp.presenceMinutes) FROM DailyPresence dp " +
@@ -22,4 +24,14 @@ public interface DailyPresenceRepository extends CrudRepository<DailyPresence, L
     int presenceMinutesWeekPeriod(@Param("userId") String userId,
                                   @Param("weekFrom") int weekFrom,
                                   @Param("weekTo") int weekTo);
+
+
+    @Query("SELECT dp.userId, SUM(dp.presenceMinutes) FROM DailyPresence dp " +
+            "WHERE dp.daysSinceEpoch=:day " +
+            "GROUP BY dp.userId")
+    Map presencePerDayPerEmployee(@Param("day") int day);
+
+    @Query("SELECT dp.userId, SUM(dp.presenceMinutes) FROM DailyPresence dp " +
+            "GROUP BY dp.userId")
+    Map presencePerDayPerEmployee2();
 }
