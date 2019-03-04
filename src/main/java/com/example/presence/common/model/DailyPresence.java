@@ -15,6 +15,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+//todo: add indexes as long as queries are defined
 public class DailyPresence {
 
     @Id

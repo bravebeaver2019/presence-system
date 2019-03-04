@@ -27,7 +27,11 @@
 it allows both parts to scale independently and provides replay capabilities.
 In the current implementation they are grouped in capture, processing and query packages
 In real life, out of this test they would be in different applications where we could have running N capture apps,
-M processing and Z query apps
+M processing and Z query apps.
+The solution has been designed easily scale in all elements, event in the databases.
+First one is Kafka which natively scales easily/
+Second one is a JPA implementation in H2, this model has been designed in a columnar way easily portable
+to other scalable databases such as Cassandra or Google BigTable
 
 * the advantage of using kafka instead of another messaging system is the scalability capability it offers
 we can partition as much as we want in case we need to increase the processing capabilities.
@@ -39,7 +43,7 @@ external app clients, probably should not be the case in real life
 
 * security not considered
 
-* dates are considered in UTZ for easiness
+* dates are considered in UTC for easiness, however more test with corner cases should be done to check everything works fine
 
 * added a script under utils/sendScan.sh to send a simple json scan object to the capture layer
 
@@ -81,3 +85,5 @@ It will allow us to quickly get reports like for example
   * the total presence per employee in the last week
   * the total presence for one employee yesterday
 
+* fingerprint hash has been used along all the application to identify an employee, this assumes the
+external fingerprint scanner is capable to uniquely identify the same employee with the same hash

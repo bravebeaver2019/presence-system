@@ -3,3 +3,5 @@ kafka:
 logging:
   level:
     org.springframework.web: trace
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

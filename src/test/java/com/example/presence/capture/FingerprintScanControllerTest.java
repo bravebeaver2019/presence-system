@@ -27,7 +27,6 @@ public class FingerprintScanControllerTest {
         FingerprintScan scan = new FingerprintScan(fingerprintHash, now, Access.LOGIN);
 
         controller.scanFingerprint(scan);
-        // just check the service is correctly invoked
         Mockito.verify(scanService).readScan(scan);
     }
 

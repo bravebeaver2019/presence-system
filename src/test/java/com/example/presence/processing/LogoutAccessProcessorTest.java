@@ -71,7 +71,7 @@ public class LogoutAccessProcessorTest {
                         .yearsSinceEpoch(43)
                         .monthsSinceEpoch(526)
                         .weeksSinceEpoch(2287)
-                        .daysSinceEpoch(16011)
+                        .daysSinceEpoch(16010)
                         .build()
         );
     }
